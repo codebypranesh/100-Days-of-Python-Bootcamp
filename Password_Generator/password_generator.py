@@ -1,43 +1,46 @@
+#Password Generator Project
 import random
-import pyfiglet
+letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
-logo="Password\nGenerator"
-print(pyfiglet.figlet_format(logo))
+print("Welcome to the PyPassword Generator!")
+nr_letters = int(input("How many letters would you like in your password?\n")) 
+nr_symbols = int(input(f"How many symbols would you like?\n"))
+nr_numbers = int(input(f"How many numbers would you like?\n"))
 
-letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
- 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
- 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
- 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+#Eazy Level
+# password = ""
 
-numbers=['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-symbols=['!', '@', '#', '$', '%', '^', '&', '*', '(', ')']
+# for char in range(1, nr_letters + 1):
+#   password += random.choice(letters)
 
+# for char in range(1, nr_symbols + 1):
+#   password += random.choice(symbols)
 
-print("Welcome to Pypassword Generator!")
-enter_letter=int(input("How many letter would you like in passwords?"))
-enter_numbers=int(input("How many numbers would you like in passwords?"))
-enter_symbols=int(input("How many symbols would you like in passwords?"))
+# for char in range(1, nr_numbers + 1):
+#   password += random.choice(numbers)
 
-final_password=[]
+# print(password)
 
-for letter in range(0,enter_letter):
-    final_password.append(random.choice(letters))
+#Hard Level
+password_list = []
 
-for number in range(0,enter_numbers):
-    final_password.append(random.choice(numbers))
+for char in range(1, nr_letters + 1):
+  password_list.append(random.choice(letters))
 
-for symbol in range(0,enter_symbols):
-    final_password.append(random.choice(symbols))
+for char in range(1, nr_symbols + 1):
+  password_list += random.choice(symbols)
 
-print("final passoword without shuffle ",final_password)
+for char in range(1, nr_numbers + 1):
+  password_list += random.choice(numbers)
 
-random.shuffle(final_password)
+print(password_list)
+random.shuffle(password_list)
+print(password_list)
 
-print("final passoword with shuffle ",final_password)
+password = ""
+for char in password_list:
+  password += char
 
-password=''
-for char in final_password:
-    password+=char
-print(password)
-
-
+print(f"Your password is: {password}")
